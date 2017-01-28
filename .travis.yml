@@ -18,7 +18,8 @@ script: php vendor/bin/phpunit -v -c phpunit.xml.dist
 
 after_success:
   - travis_retry php vendor/bin/coveralls
-  - travis_retry php vendor/bin/phpmetrics --report-cli .
+  - wget https://scrutinizer-ci.com/ocular.phar
+  - php ocular.phar code-coverage:upload --format=php-clover build/logs/clover.xml
 
 notifications:
   email: true
