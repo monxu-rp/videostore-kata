@@ -1,0 +1,19 @@
+
+language: php
+php:
+  - '7.0'
+
+cache:
+  directories:
+    - $HOME/.composer/cache
+
+before_install:
+  - composer self-update
+
+install:
+  - composer install --no-interaction --no-progress
+
+script: php vendor/bin/phpunit -v -c phpunit.xml.dist
+
+notifications:
+  email: true
