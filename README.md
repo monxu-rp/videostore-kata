@@ -3,6 +3,7 @@
 This README would normally document whatever steps are necessary to get your application up and running. 
 
 [![Build Status](https://travis-ci.org/monxu-rp/videostore-kata.svg?branch=master)](https://travis-ci.org/monxu-rp/videostore-kata)
+[![Coverage Status](https://coveralls.io/repos/github/monxu-rp/videostore-kata/badge.svg)](https://coveralls.io/github/monxu-rp/videostore-kata)
 
 ### Requirements ###
 
