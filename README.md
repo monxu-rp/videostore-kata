@@ -2,6 +2,8 @@
 
 This README would normally document whatever steps are necessary to get your application up and running. 
 
+[![Build Status](https://travis-ci.org/monxu-rp/videostore-kata.svg?branch=master)](https://travis-ci.org/monxu-rp/videostore-kata)
+
 ### Requirements ###
 
 * PHP 7+
