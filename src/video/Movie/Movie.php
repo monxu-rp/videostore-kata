@@ -7,7 +7,7 @@ class Movie
     /** @var string */
     private $title;
 
-    /** @var string */
+    /** @var MovieType */
     private $category;
 
     /**
@@ -27,7 +27,8 @@ class Movie
     }
 
     /** @return string */
-    public function title(): string {
+    public function title(): string
+    {
         return $this->title;
     }
 
