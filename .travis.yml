@@ -17,6 +17,7 @@ script: php vendor/bin/phpunit -v -c phpunit.xml.dist
 
 after_success:
   - travis_retry php vendor/bin/coveralls
+  - travis_retry php vendor/bin/phpmetrics --report-cli .
 
 notifications:
   email: true
