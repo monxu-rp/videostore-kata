@@ -4,12 +4,12 @@ namespace tests\Legacy;
 
 use PHPUnit_Framework_TestCase;
 use video\ChildrensMovie;
-use video\Movie;
+use video\Movie\Movie;
+use video\Movie\MovieType;
 use video\NewReleaseMovie;
 use video\RegularMovie;
 use video\Rental;
 use video\RentalStatement;
-
 
 /**
  * Class VideoStoreTest
@@ -37,12 +37,12 @@ class VideoStoreTest extends PHPUnit_Framework_TestCase
     protected function setUp()
     {
         $this->statement = new RentalStatement('Customer Name');
-        $this->newRelease1 = new NewReleaseMovie('New Release 1');
-        $this->newRelease2 = new NewReleaseMovie('New Release 2');
-        $this->childrens = new ChildrensMovie('Childrens');
-        $this->regular1 = new RegularMovie('Regular 1');
-        $this->regular2 = new RegularMovie('Regular 2');
-        $this->regular3 = new RegularMovie('Regular 3');
+        $this->newRelease1 = Movie::instanceMovie('New Release 1', MovieType::newRelease());
+        $this->newRelease2 = Movie::instanceMovie('New Release 2', MovieType::newRelease());
+        $this->childrens = Movie::instanceMovie('Childrens', MovieType::children());
+        $this->regular1 = Movie::instanceMovie('Regular 1', MovieType::regular());
+        $this->regular2 = Movie::instanceMovie('Regular 2', MovieType::regular());
+        $this->regular3 = Movie::instanceMovie('Regular 3', MovieType::regular());
     }
 
     /**
