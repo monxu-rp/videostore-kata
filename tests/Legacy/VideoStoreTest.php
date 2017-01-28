@@ -1,6 +1,6 @@
 <?php
 
-namespace tests;
+namespace tests\Legacy;
 
 use PHPUnit_Framework_TestCase;
 use video\ChildrensMovie;
