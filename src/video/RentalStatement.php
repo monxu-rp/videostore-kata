@@ -2,6 +2,8 @@
 
 namespace video;
 
+use video\Rental\RentalInformation;
+
 /**
  * Class RentalStatement
  */
@@ -26,7 +28,7 @@ class RentalStatement
     }
 
     /**
-     * @param Rental $rental
+     * @param RentalInformation $rental
      */
     public function addRental($rental)
     {
@@ -67,7 +69,7 @@ class RentalStatement
     {
         $rentalLines = "";
 
-        foreach($this->rentals as $rental) {
+        foreach ($this->rentals as $rental) {
             $rentalLines .= $this->makeRentalLine($rental);
         }
 
@@ -75,28 +77,28 @@ class RentalStatement
     }
 
     /**
-     * @param Rental $rental
+     * @param RentalInformation $rental
      * @return string
      */
     private function makeRentalLine($rental) : string
     {
         /** @var float $thisAmount */
-        $thisAmount = $rental->determineAmount();
+        $thisAmount = $rental->amount();
 
-        $this->frequentRenterPoints += $rental->determineFrequentRenterPoints();
+        $this->frequentRenterPoints += $rental->frequentRenterPoints();
         $this->totalAmount += $thisAmount;
 
         return $this->formatRentalLine($rental, $thisAmount);
     }
 
     /**
-     * @param Rental $rental
+     * @param RentalInformation $rental
      * @param float $thisAmount
      * @return string
      */
     private function formatRentalLine($rental, $thisAmount) : string
     {
-        return "\t" . $rental->title() . "\t" . number_format($thisAmount, 1) . "\n";
+        return "\t" . $rental->getMovieTitle() . "\t" . number_format($thisAmount, 1) . "\n";
     }
 
     /**
