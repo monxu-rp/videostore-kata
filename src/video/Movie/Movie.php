@@ -8,22 +8,28 @@ class Movie
     private $title;
 
     /** @var MovieType */
-    private $category;
+    private $type;
 
     /**
      * Movie constructor.
      * @param string $title
-     * @param MovieType $category
+     * @param MovieType $type
      */
-    private function __construct(string $title, MovieType $category)
+    private function __construct(string $title, MovieType $type)
     {
         $this->title = $title;
-        $this->category = $category;
+        $this->type = $type;
     }
 
-    public static function instanceMovie(string $title, MovieType $category)
+    /**
+     * @param string $title
+     * @param MovieType $type
+     *
+     * @return static
+     */
+    public static function instanceMovie(string $title, MovieType $type)
     {
-        return new static($title, $category);
+        return new static($title, $type);
     }
 
     /** @return string */
@@ -33,8 +39,13 @@ class Movie
     }
 
     /** @return MovieType */
-    public function category(): MovieType
+    public function type(): MovieType
     {
-        return $this->category;
+        return $this->type;
+    }
+
+    public function getMovieType(): int
+    {
+        return $this->type->type();
     }
 }
