@@ -2,7 +2,7 @@
 
 namespace video\Rental\RentalPriceCalculator;
 
-use Symfony\Component\Config\Definition\Exception\Exception;
+use Exception;
 
 /**
  * Class DetermineAmountByFixedPricePerDay
@@ -22,7 +22,7 @@ class DetermineAmountByFixedPricePerDay implements RentalPriceCalculator
 
     public function determineRentalAmount(int $days): float
     {
-        if ($days<=0 || !isset($this->amountPerDay)) {
+        if ($days<=0) {
             throw new Exception("Days & Amount per day must be added");
         }
 

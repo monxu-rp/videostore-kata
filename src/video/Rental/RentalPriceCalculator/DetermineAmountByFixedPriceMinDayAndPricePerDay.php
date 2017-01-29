@@ -2,6 +2,8 @@
 
 namespace video\Rental\RentalPriceCalculator;
 
+use Exception;
+
 /**
  * Class DetermineAmountByFixedPriceMinDayAndPricePerDay
  */
@@ -30,6 +32,10 @@ class DetermineAmountByFixedPriceMinDayAndPricePerDay implements RentalPriceCalc
     public function determineRentalAmount(int $days): float
     {
         $thisAmount = $this->fixedPrice;
+
+        if ($days<=0) {
+            throw new Exception("Days & Amount per day must be added");
+        }
 
         if ($days > $this->minDay) {
             $thisAmount += ($days - $this->minDay) * $this->pricePerDay;
