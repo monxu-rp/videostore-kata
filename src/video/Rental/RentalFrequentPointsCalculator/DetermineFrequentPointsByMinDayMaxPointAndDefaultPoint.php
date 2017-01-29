@@ -8,26 +8,26 @@ namespace video\Rental\RentalFrequentPointsCalculator;
 class DetermineFrequentPointsByMinDayMaxPointAndDefaultPoint implements RentalFrequentPointsCalculator
 {
     /** @var  int */
-    private $minDate;
+    private $minDay;
     /** @var  int */
     private $maxPoint;
     /** @var  int */
     private $defaultPoint;
 
     /**
-     * @param int $minDate
+     * @param int $minDay
      * @param int $maxPoint
      * @param int $defaultPoint
      */
-    public function __construct(int $minDate, int $maxPoint, int $defaultPoint)
+    public function __construct(int $minDay, int $maxPoint, int $defaultPoint)
     {
-        $this->minDate = $minDate;
+        $this->minDay = $minDay;
         $this->maxPoint = $maxPoint;
         $this->defaultPoint = $defaultPoint;
     }
 
     public function determineFrequentRenterPoints(int $days): int
     {
-        return ($days > $this->minDate) ? $this->maxPoint : $this->defaultPoint;
+        return ($days > $this->minDay) ? $this->maxPoint : $this->defaultPoint;
     }
 }
