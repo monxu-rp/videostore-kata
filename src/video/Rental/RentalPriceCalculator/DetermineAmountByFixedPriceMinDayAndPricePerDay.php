@@ -33,7 +33,7 @@ class DetermineAmountByFixedPriceMinDayAndPricePerDay implements RentalPriceCalc
     {
         $thisAmount = $this->fixedPrice;
 
-        if ($days<=0) {
+        if ($days <= 0) {
             throw new Exception("Days & Amount per day must be added");
         }
 

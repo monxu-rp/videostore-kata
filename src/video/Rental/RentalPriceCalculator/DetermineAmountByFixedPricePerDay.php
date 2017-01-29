@@ -22,7 +22,7 @@ class DetermineAmountByFixedPricePerDay implements RentalPriceCalculator
 
     public function determineRentalAmount(int $days): float
     {
-        if ($days<=0) {
+        if ($days <= 0) {
             throw new Exception("Days & Amount per day must be added");
         }
 
