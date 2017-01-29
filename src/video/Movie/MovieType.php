@@ -18,7 +18,7 @@ class MovieType
      * MovieType constructor.
      * @param int $type
      */
-    private function __construct($type)
+    private function __construct(int $type)
     {
         $this->type = $type;
     }

@@ -46,6 +46,6 @@ class Movie
 
     public function getMovieType(): int
     {
-        return $this->type->type();
+        return $this->type()->type();
     }
 }
