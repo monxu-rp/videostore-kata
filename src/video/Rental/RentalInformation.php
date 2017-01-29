@@ -49,14 +49,6 @@ class RentalInformation
     }
 
     /**
-     * @return int
-     */
-    public function daysRented(): int
-    {
-        return $this->daysRented;
-    }
-
-    /**
      * @return float
      */
     public function amount(): float
@@ -70,5 +62,10 @@ class RentalInformation
     public function frequentRenterPoints(): float
     {
         return $this->frequentRenterPoints;
+    }
+
+    public function getMovieTitle(): string
+    {
+        return $this->movie()->title();
     }
 }
