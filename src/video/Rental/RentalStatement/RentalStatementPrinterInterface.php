@@ -1,6 +1,6 @@
 <?php
 
-namespace video\Rental\RentalStatement;
+namespace VideoStoreKata\video\Rental\RentalStatement;
 
 /**
  * Interface RentalStatementPrinterInterface

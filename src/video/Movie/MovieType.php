@@ -1,6 +1,6 @@
 <?php
 
-namespace video\Movie;
+namespace VideoStoreKata\video\Movie;
 
 /**
  * Class MovieType

@@ -1,6 +1,6 @@
 <?php
 
-namespace video\Rental\RentalPriceCalculator;
+namespace VideoStoreKata\video\Rental\RentalPriceCalculator;
 
 use Exception;
 

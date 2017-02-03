@@ -1,7 +1,7 @@
 <?php
 namespace tests\Legacy;
 
-use video\Customer\Customer;
+use VideoStoreKata\video\Customer\Customer;
 
 /**
  * Class CustomerTest

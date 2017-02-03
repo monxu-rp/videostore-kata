@@ -1,6 +1,6 @@
 <?php
 
-namespace video\Customer;
+namespace VideoStoreKata\video\Customer;
 
 /**
  * Class Customer

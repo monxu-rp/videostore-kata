@@ -1,8 +1,8 @@
 <?php
 
-namespace video\Rental;
+namespace VideoStoreKata\video\Rental;
 
-use video\Movie\Movie;
+use VideoStoreKata\video\Movie\Movie;
 
 /**
  * Class RentalInformation

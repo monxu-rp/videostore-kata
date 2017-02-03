@@ -1,6 +1,6 @@
 <?php
 
-namespace video\Rental\RentalFrequentPointsCalculator;
+namespace VideoStoreKata\video\Rental\RentalFrequentPointsCalculator;
 
 /**
  * Class DetermineFrequentPointsByMinDayMaxPointAndDefaultPoint

@@ -1,7 +1,7 @@
 <?php
-namespace video\Rental\RentalStatement;
+namespace VideoStoreKata\video\Rental\RentalStatement;
 
-use video\Rental\RentalInformation;
+use VideoStoreKata\video\Rental\RentalInformation;
 
 class RentalStatementStringPrinter implements RentalStatementPrinterInterface
 {

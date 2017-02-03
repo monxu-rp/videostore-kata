@@ -1,8 +1,8 @@
 <?php
-namespace video\Rental\RentalStatement;
+namespace VideoStoreKata\video\Rental\RentalStatement;
 
-use video\Customer\Customer;
-use video\Rental\RentalInformation;
+use VideoStoreKata\video\Customer\Customer;
+use VideoStoreKata\video\Rental\RentalInformation;
 
 class RentalStatement
 {

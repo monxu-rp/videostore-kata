@@ -4,12 +4,12 @@ namespace tests\Legacy;
 
 use Exception;
 use PHPUnit_Framework_TestCase;
-use video\Customer\Customer;
-use video\Movie\Movie;
-use video\Movie\MovieType;
-use video\Rental\RentalCalculation;
-use video\Rental\RentalStatement\RentalStatement;
-use video\Rental\RentalStatement\RentalStatementStringPrinter;
+use VideoStoreKata\video\Customer\Customer;
+use VideoStoreKata\video\Movie\Movie;
+use VideoStoreKata\video\Movie\MovieType;
+use VideoStoreKata\video\Rental\RentalCalculation;
+use VideoStoreKata\video\Rental\RentalStatement\RentalStatement;
+use VideoStoreKata\video\Rental\RentalStatement\RentalStatementStringPrinter;
 
 /**
  * Class VideoStoreTest

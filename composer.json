@@ -1,5 +1,5 @@
 {
-  "name": "videostore-kata",
+  "name": "monxu-rp/videostore-kata",
   "description": "Uncle Bob's videostore kata",
   "minimum-stability": "stable",
   "license": "proprietary",
@@ -11,7 +11,7 @@
   ],
   "autoload": {
     "psr-4": {
-      "VideostoreKata\\": "src/"
+      "VideoStoreKata\\": "src/"
     }
   },
   "autoload-dev": {

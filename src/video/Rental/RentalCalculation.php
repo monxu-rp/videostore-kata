@@ -1,15 +1,15 @@
 <?php
 
-namespace video\Rental;
+namespace VideoStoreKata\video\Rental;
 
-use video\Movie\Movie;
-use video\Movie\MovieType;
-use video\Rental\RentalFrequentPointsCalculator\DetermineFrequentPointsByFixedPoints;
-use video\Rental\RentalFrequentPointsCalculator\DetermineFrequentPointsByMinDayMaxPointAndDefaultPoint;
-use video\Rental\RentalFrequentPointsCalculator\RentalFrequentPointsCalculatorInterface;
-use video\Rental\RentalPriceCalculator\DetermineAmountByFixedPriceMinDayAndPricePerDay;
-use video\Rental\RentalPriceCalculator\DetermineAmountByFixedPricePerDay;
-use video\Rental\RentalPriceCalculator\RentalPriceCalculatorInterface;
+use VideoStoreKata\video\Movie\Movie;
+use VideoStoreKata\video\Movie\MovieType;
+use VideoStoreKata\video\Rental\RentalFrequentPointsCalculator\DetermineFrequentPointsByFixedPoints;
+use VideoStoreKata\video\Rental\RentalFrequentPointsCalculator\DetermineFrequentPointsByMinDayMaxPointAndDefaultPoint;
+use VideoStoreKata\video\Rental\RentalFrequentPointsCalculator\RentalFrequentPointsCalculatorInterface;
+use VideoStoreKata\video\Rental\RentalPriceCalculator\DetermineAmountByFixedPriceMinDayAndPricePerDay;
+use VideoStoreKata\video\Rental\RentalPriceCalculator\DetermineAmountByFixedPricePerDay;
+use VideoStoreKata\video\Rental\RentalPriceCalculator\RentalPriceCalculatorInterface;
 
 /**
  * Class RentalCalculation
