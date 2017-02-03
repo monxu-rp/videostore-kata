@@ -33,7 +33,7 @@ class RentalStatementStringPrinter implements RentalStatementPrinter
 
     private function makeRentalLine(RentalInformation $rental): string
     {
-        return "\t" . $rental->getMovieTitle() . "\t" . number_format((float)$rental->amount(), 1, '.', '') . "\n";
+        return "\t" . $rental->getMovieTitle() . "\t" . number_format((float) $rental->amount(), 1, '.', '') . "\n";
     }
 
     private function makeSummary(RentalStatement $rentalStatement): string
