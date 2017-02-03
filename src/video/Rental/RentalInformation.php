@@ -5,7 +5,7 @@ namespace VideoStoreKata\video\Rental;
 use VideoStoreKata\video\Movie\Movie;
 
 /**
- * Class RentalInformation
+ * Class RentalInformation.
  */
 class RentalInformation
 {
@@ -23,7 +23,7 @@ class RentalInformation
 
     /**
      * @param Movie $movie
-     * @param int $daysRented
+     * @param int   $daysRented
      * @param float $amount
      * @param float $frequentRenterPoints
      */
@@ -67,5 +67,13 @@ class RentalInformation
     public function getMovieTitle(): string
     {
         return $this->movie()->title();
+    }
+
+    /**
+     * @return int
+     */
+    public function daysRented(): int
+    {
+        return $this->daysRented;
     }
 }

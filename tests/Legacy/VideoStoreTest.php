@@ -142,4 +142,24 @@ class VideoStoreTest extends PHPUnit_Framework_TestCase
     {
         $this->statement->addRental($this->rentalCalculation->totalRental($this->childrens, 0));
     }
+
+    /**
+     * @test
+     */
+    public function itShouldReturnTheMovieDaysRenter()
+    {
+        //Regular
+        $rentalInformation = $this->rentalCalculation->totalRental($this->regular1, 1);
+        $this->assertSame($rentalInformation->daysRented(), 1);
+        $rentalInformation =$this->rentalCalculation->totalRental($this->regular2, 2);
+        $this->assertSame($rentalInformation->daysRented(), 2);
+        $rentalInformation =$this->rentalCalculation->totalRental($this->regular3, 3);
+        $this->assertSame($rentalInformation->daysRented(), 3);
+        //New Release
+        $rentalInformation =$this->rentalCalculation->totalRental($this->newRelease1, 0);
+        $this->assertSame($rentalInformation->daysRented(), 0);
+        //Children
+        $rentalInformation =$this->rentalCalculation->totalRental($this->childrens, 0);
+        $this->assertSame($rentalInformation->daysRented(), 0);
+    }
 }
