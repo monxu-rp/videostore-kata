@@ -1,5 +1,5 @@
 {
-  "name": "videostore",
+  "name": "videostore-kata",
   "description": "Uncle Bob's videostore kata",
   "minimum-stability": "stable",
   "license": "proprietary",
@@ -11,7 +11,7 @@
   ],
   "autoload": {
     "psr-4": {
-      "": "src/"
+      "VideostoreKata\\": "src/"
     }
   },
   "autoload-dev": {

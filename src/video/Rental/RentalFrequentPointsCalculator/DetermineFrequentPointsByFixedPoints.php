@@ -5,7 +5,7 @@ namespace video\Rental\RentalFrequentPointsCalculator;
 /**
  * Class DetermineFrequentPointsByFixedPoints
  */
-class DetermineFrequentPointsByFixedPoints implements RentalFrequentPointsCalculator
+class DetermineFrequentPointsByFixedPoints implements RentalFrequentPointsCalculatorInterface
 {
     /** @var  int */
     private $fixedPoints;

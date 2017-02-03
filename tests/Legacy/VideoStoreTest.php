@@ -39,7 +39,10 @@ class VideoStoreTest extends PHPUnit_Framework_TestCase
      */
     protected function setUp()
     {
-        $this->statement = new RentalStatement(Customer::instanceCustomer('Customer Name'), new RentalStatementStringPrinter());
+        $this->statement = new RentalStatement(
+            Customer::instanceCustomer('Customer Name'),
+            new RentalStatementStringPrinter()
+        );
         $this->newRelease1 = Movie::instanceMovie('New Release 1', MovieType::newRelease());
         $this->newRelease2 = Movie::instanceMovie('New Release 2', MovieType::newRelease());
         $this->childrens = Movie::instanceMovie('Childrens', MovieType::children());

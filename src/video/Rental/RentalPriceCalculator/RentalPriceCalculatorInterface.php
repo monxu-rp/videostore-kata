@@ -3,9 +3,9 @@
 namespace video\Rental\RentalPriceCalculator;
 
 /**
- * Interface RentalPriceCalculator
+ * Interface RentalPriceCalculatorInterface
  */
-interface RentalPriceCalculator
+interface RentalPriceCalculatorInterface
 {
     public function determineRentalAmount(int $days): float;
 }

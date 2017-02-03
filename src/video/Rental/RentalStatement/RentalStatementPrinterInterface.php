@@ -3,9 +3,9 @@
 namespace video\Rental\RentalStatement;
 
 /**
- * Interface RentalStatementPrinter
+ * Interface RentalStatementPrinterInterface
  */
-interface RentalStatementPrinter
+interface RentalStatementPrinterInterface
 {
     public function makeRentalStatement(RentalStatement $rentalStatement): string;
 }

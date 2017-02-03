@@ -3,9 +3,9 @@
 namespace video\Rental\RentalFrequentPointsCalculator;
 
 /**
- * Interface RentalFrequentPointsCalculator
+ * Interface RentalFrequentPointsCalculatorInterface
  */
-interface RentalFrequentPointsCalculator
+interface RentalFrequentPointsCalculatorInterface
 {
     /**
      * @param int $days

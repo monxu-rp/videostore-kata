@@ -10,9 +10,6 @@ class Customer
     /** @var  string */
     private $name;
 
-    /** @var array  */
-    private $rentals = [];
-
     /**
      * Customer constructor.
      * @param $name

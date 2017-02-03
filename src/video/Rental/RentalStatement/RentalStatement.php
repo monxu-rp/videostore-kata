@@ -8,7 +8,7 @@ class RentalStatement
 {
     /** @var Customer */
     private $customer;
-    /** @var RentalStatementPrinter */
+    /** @var RentalStatementPrinterInterface */
     private $printer;
     /** @var RentalInformation[] */
     private $rentals = array();
@@ -20,10 +20,10 @@ class RentalStatement
     /**
      * RentalStatement constructor.
      * @param Customer $customer
-     * @param RentalStatementPrinter $printer
+     * @param RentalStatementPrinterInterface $printer
      * @internal param Customer $customer
      */
-    public function __construct(Customer $customer, RentalStatementPrinter $printer)
+    public function __construct(Customer $customer, RentalStatementPrinterInterface $printer)
     {
         $this->customer = $customer;
         $this->printer = $printer;

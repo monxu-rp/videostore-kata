@@ -5,7 +5,7 @@ namespace video\Rental\RentalFrequentPointsCalculator;
 /**
  * Class DetermineFrequentPointsByMinDayMaxPointAndDefaultPoint
  */
-class DetermineFrequentPointsByMinDayMaxPointAndDefaultPoint implements RentalFrequentPointsCalculator
+class DetermineFrequentPointsByMinDayMaxPointAndDefaultPoint implements RentalFrequentPointsCalculatorInterface
 {
     /** @var  int */
     private $minDay;

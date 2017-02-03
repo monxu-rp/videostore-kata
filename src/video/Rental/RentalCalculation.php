@@ -6,20 +6,20 @@ use video\Movie\Movie;
 use video\Movie\MovieType;
 use video\Rental\RentalFrequentPointsCalculator\DetermineFrequentPointsByFixedPoints;
 use video\Rental\RentalFrequentPointsCalculator\DetermineFrequentPointsByMinDayMaxPointAndDefaultPoint;
-use video\Rental\RentalFrequentPointsCalculator\RentalFrequentPointsCalculator;
+use video\Rental\RentalFrequentPointsCalculator\RentalFrequentPointsCalculatorInterface;
 use video\Rental\RentalPriceCalculator\DetermineAmountByFixedPriceMinDayAndPricePerDay;
 use video\Rental\RentalPriceCalculator\DetermineAmountByFixedPricePerDay;
-use video\Rental\RentalPriceCalculator\RentalPriceCalculator;
+use video\Rental\RentalPriceCalculator\RentalPriceCalculatorInterface;
 
 /**
  * Class RentalCalculation
  */
 class RentalCalculation
 {
-    /** @var RentalPriceCalculator[] */
+    /** @var RentalPriceCalculatorInterface[] */
     private $calculateRentalAmount;
 
-    /** @var RentalFrequentPointsCalculator[] */
+    /** @var RentalFrequentPointsCalculatorInterface[] */
     private $calculateRentalFrequentPoints;
 
     /**

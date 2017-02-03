@@ -1,10 +1,9 @@
 <?php
 namespace video\Rental\RentalStatement;
 
-
 use video\Rental\RentalInformation;
 
-class RentalStatementStringPrinter implements RentalStatementPrinter
+class RentalStatementStringPrinter implements RentalStatementPrinterInterface
 {
     public function makeRentalStatement(RentalStatement $rentalStatement): string
     {

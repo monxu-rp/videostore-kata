@@ -7,7 +7,7 @@ use Exception;
 /**
  * Class DetermineAmountByFixedPricePerDay
  */
-class DetermineAmountByFixedPricePerDay implements RentalPriceCalculator
+class DetermineAmountByFixedPricePerDay implements RentalPriceCalculatorInterface
 {
     /** @var  float */
     private $amountPerDay;
