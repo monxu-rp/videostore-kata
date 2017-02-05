@@ -3,7 +3,7 @@
 namespace VideoStoreKata\video\Rental\RentalPriceCalculator;
 
 /**
- * Interface RentalPriceCalculatorInterface
+ * Interface RentalPriceCalculatorInterface.
  */
 interface RentalPriceCalculatorInterface
 {

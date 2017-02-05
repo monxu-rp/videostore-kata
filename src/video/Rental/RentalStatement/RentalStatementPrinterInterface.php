@@ -3,7 +3,7 @@
 namespace VideoStoreKata\video\Rental\RentalStatement;
 
 /**
- * Interface RentalStatementPrinterInterface
+ * Interface RentalStatementPrinterInterface.
  */
 interface RentalStatementPrinterInterface
 {

@@ -3,7 +3,7 @@
 namespace VideoStoreKata\video\Rental\RentalFrequentPointsCalculator;
 
 /**
- * Interface RentalFrequentPointsCalculatorInterface
+ * Interface RentalFrequentPointsCalculatorInterface.
  */
 interface RentalFrequentPointsCalculatorInterface
 {

@@ -1,4 +1,5 @@
 <?php
+
 namespace VideoStoreKata\video\Rental\RentalStatement;
 
 use VideoStoreKata\video\Rental\RentalInformation;
@@ -8,19 +9,19 @@ class RentalStatementStringPrinter implements RentalStatementPrinterInterface
     public function makeRentalStatement(RentalStatement $rentalStatement): string
     {
         return
-            $this->makeHeader($rentalStatement) .
-            $this->makeRentalLines($rentalStatement) .
+            $this->makeHeader($rentalStatement).
+            $this->makeRentalLines($rentalStatement).
             $this->makeSummary($rentalStatement);
     }
 
     private function makeHeader(RentalStatement $rentalStatement): string
     {
-        return "Rental Record for " . $rentalStatement->customerName() . "\n";
+        return 'Rental Record for '.$rentalStatement->customerName()."\n";
     }
 
     private function makeRentalLines(RentalStatement $rentalStatement): string
     {
-        $rentalLines = "";
+        $rentalLines = '';
 
         foreach ($rentalStatement->getRentals() as $rental) {
             $rentalLines .= $this->makeRentalLine($rental);
@@ -29,15 +30,14 @@ class RentalStatementStringPrinter implements RentalStatementPrinterInterface
         return $rentalLines;
     }
 
-
     private function makeRentalLine(RentalInformation $rental): string
     {
-        return "\t" . $rental->getMovieTitle() . "\t" . number_format((float) $rental->amount(), 1, '.', '') . "\n";
+        return "\t".$rental->getMovieTitle()."\t".number_format((float) $rental->amount(), 1, '.', '')."\n";
     }
 
     private function makeSummary(RentalStatement $rentalStatement): string
     {
-        return "You owed " . $rentalStatement->amountOwed() . "\n"
-            . "You earned " . $rentalStatement->frequentRenterPoints() . " frequent renter points\n";
+        return 'You owed '.$rentalStatement->amountOwed()."\n"
+            .'You earned '.$rentalStatement->frequentRenterPoints()." frequent renter points\n";
     }
 }

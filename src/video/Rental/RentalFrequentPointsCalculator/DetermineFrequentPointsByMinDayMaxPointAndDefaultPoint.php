@@ -3,15 +3,15 @@
 namespace VideoStoreKata\video\Rental\RentalFrequentPointsCalculator;
 
 /**
- * Class DetermineFrequentPointsByMinDayMaxPointAndDefaultPoint
+ * Class DetermineFrequentPointsByMinDayMaxPointAndDefaultPoint.
  */
 class DetermineFrequentPointsByMinDayMaxPointAndDefaultPoint implements RentalFrequentPointsCalculatorInterface
 {
-    /** @var  int */
+    /** @var int */
     private $minDay;
-    /** @var  int */
+    /** @var int */
     private $maxPoint;
-    /** @var  int */
+    /** @var int */
     private $defaultPoint;
 
     /**
@@ -19,13 +19,26 @@ class DetermineFrequentPointsByMinDayMaxPointAndDefaultPoint implements RentalFr
      * @param int $maxPoint
      * @param int $defaultPoint
      */
-    public function __construct(int $minDay, int $maxPoint, int $defaultPoint)
+    private function __construct(int $minDay, int $maxPoint, int $defaultPoint)
     {
         $this->minDay = $minDay;
         $this->maxPoint = $maxPoint;
         $this->defaultPoint = $defaultPoint;
     }
 
+    public static function instance(
+        int $minDay,
+        int $maxPoint,
+        int $defaultPoint
+    ):DetermineFrequentPointsByMinDayMaxPointAndDefaultPoint {
+        return new static($minDay, $maxPoint, $defaultPoint);
+    }
+
+    /**
+     * @param int $days
+     *
+     * @return int
+     */
     public function determineFrequentRenterPoints(int $days): int
     {
         return ($days > $this->minDay) ? $this->maxPoint : $this->defaultPoint;

@@ -49,7 +49,6 @@ class VideoStoreTest extends PHPUnit_Framework_TestCase
         $this->regular1 = Movie::instanceMovie('Regular 1', MovieType::regular());
         $this->regular2 = Movie::instanceMovie('Regular 2', MovieType::regular());
         $this->regular3 = Movie::instanceMovie('Regular 3', MovieType::regular());
-        $this->rentalCalculation = RentalCalculation::getRentalCalculationFactory();
     }
 
     /**
@@ -64,7 +63,6 @@ class VideoStoreTest extends PHPUnit_Framework_TestCase
         $this->regular1 = null;
         $this->regular2 = null;
         $this->regular3 = null;
-        $this->rentalCalculation = null;
     }
 
     private function assertAmountAndPointsForReport($expectedAmount, $expectedPoints)
@@ -75,7 +73,9 @@ class VideoStoreTest extends PHPUnit_Framework_TestCase
 
     public function testSingleNewReleaseStatement()
     {
-        $this->statement->addRental($this->rentalCalculation->totalRental($this->newRelease1, 3));
+        $this->statement->addRental(
+            RentalCalculation::instanceRentalCalculation($this->newRelease1)->totalRental(3)
+        );
         $this->statement->makeRentalStatement();
 
         $this->assertAmountAndPointsForReport(9.0, 2);
@@ -83,8 +83,12 @@ class VideoStoreTest extends PHPUnit_Framework_TestCase
 
     public function testDualNewReleaseStatement()
     {
-        $this->statement->addRental($this->rentalCalculation->totalRental($this->newRelease1, 3));
-        $this->statement->addRental($this->rentalCalculation->totalRental($this->newRelease2, 3));
+        $this->statement->addRental(
+            RentalCalculation::instanceRentalCalculation($this->newRelease1)->totalRental(3)
+        );
+        $this->statement->addRental(
+            RentalCalculation::instanceRentalCalculation($this->newRelease2)->totalRental(3)
+        );
         $this->statement->makeRentalStatement();
 
         $this->assertAmountAndPointsForReport(18.0, 4);
@@ -92,7 +96,9 @@ class VideoStoreTest extends PHPUnit_Framework_TestCase
 
     public function testSingleChildrensStatement()
     {
-        $this->statement->addRental($this->rentalCalculation->totalRental($this->childrens, 3));
+        $this->statement->addRental(
+            RentalCalculation::instanceRentalCalculation($this->childrens)->totalRental(3)
+        );
         $this->statement->makeRentalStatement();
 
         $this->assertAmountAndPointsForReport(1.5, 1);
@@ -100,9 +106,15 @@ class VideoStoreTest extends PHPUnit_Framework_TestCase
 
     public function testMultipleRegularStatement()
     {
-        $this->statement->addRental($this->rentalCalculation->totalRental($this->regular1, 1));
-        $this->statement->addRental($this->rentalCalculation->totalRental($this->regular2, 2));
-        $this->statement->addRental($this->rentalCalculation->totalRental($this->regular3, 3));
+        $this->statement->addRental(
+            RentalCalculation::instanceRentalCalculation($this->regular1)->totalRental(1)
+        );
+        $this->statement->addRental(
+            RentalCalculation::instanceRentalCalculation($this->regular2)->totalRental(2)
+        );
+        $this->statement->addRental(
+            RentalCalculation::instanceRentalCalculation($this->regular3)->totalRental(3)
+        );
         $this->statement->makeRentalStatement();
 
         $this->assertAmountAndPointsForReport(7.5, 3);
@@ -110,9 +122,15 @@ class VideoStoreTest extends PHPUnit_Framework_TestCase
 
     public function testRentalStatementFormat()
     {
-        $this->statement->addRental($this->rentalCalculation->totalRental($this->regular1, 1));
-        $this->statement->addRental($this->rentalCalculation->totalRental($this->regular2, 2));
-        $this->statement->addRental($this->rentalCalculation->totalRental($this->regular3, 3));
+        $this->statement->addRental(
+            RentalCalculation::instanceRentalCalculation($this->regular1)->totalRental(1)
+        );
+        $this->statement->addRental(
+            RentalCalculation::instanceRentalCalculation($this->regular2)->totalRental(2)
+        );
+        $this->statement->addRental(
+            RentalCalculation::instanceRentalCalculation($this->regular3)->totalRental(3)
+        );
 
         $this->assertEquals(
             "Rental Record for Customer Name\n" .
@@ -131,7 +149,9 @@ class VideoStoreTest extends PHPUnit_Framework_TestCase
      */
     public function itShouldThrowAnExceptionWhenDayEqualZeroOrLessIsSendInNewReleaseMovie()
     {
-        $this->statement->addRental($this->rentalCalculation->totalRental($this->newRelease1, 0));
+        $this->statement->addRental(
+            RentalCalculation::instanceRentalCalculation($this->newRelease1)->totalRental(0)
+        );
     }
 
     /**
@@ -140,7 +160,9 @@ class VideoStoreTest extends PHPUnit_Framework_TestCase
      */
     public function itShouldThrowAnExceptionWhenDayEqualOrLessZeroIsSendInChildrenMovie()
     {
-        $this->statement->addRental($this->rentalCalculation->totalRental($this->childrens, 0));
+        $this->statement->addRental(
+            RentalCalculation::instanceRentalCalculation($this->childrens)->totalRental(0)
+        );
     }
 
     /**
@@ -149,17 +171,21 @@ class VideoStoreTest extends PHPUnit_Framework_TestCase
     public function itShouldReturnTheMovieDaysRenter()
     {
         //Regular
-        $rentalInformation = $this->rentalCalculation->totalRental($this->regular1, 1);
+        $rentalInformation = RentalCalculation::instanceRentalCalculation($this->regular1)->totalRental(1);
         $this->assertSame($rentalInformation->daysRented(), 1);
-        $rentalInformation =$this->rentalCalculation->totalRental($this->regular2, 2);
+
+        $rentalInformation = RentalCalculation::instanceRentalCalculation($this->regular2)->totalRental(2);
         $this->assertSame($rentalInformation->daysRented(), 2);
-        $rentalInformation =$this->rentalCalculation->totalRental($this->regular3, 3);
+
+        $rentalInformation = RentalCalculation::instanceRentalCalculation($this->regular3)->totalRental(3);
         $this->assertSame($rentalInformation->daysRented(), 3);
+
         //New Release
-        $rentalInformation =$this->rentalCalculation->totalRental($this->newRelease1, 4);
+        $rentalInformation = RentalCalculation::instanceRentalCalculation($this->newRelease1)->totalRental(4);
         $this->assertSame($rentalInformation->daysRented(), 4);
+
         //Children
-        $rentalInformation =$this->rentalCalculation->totalRental($this->childrens, 5);
+        $rentalInformation = RentalCalculation::instanceRentalCalculation($this->childrens)->totalRental(5);
         $this->assertSame($rentalInformation->daysRented(), 5);
     }
 }

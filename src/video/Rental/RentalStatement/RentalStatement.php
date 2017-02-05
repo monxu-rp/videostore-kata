@@ -1,4 +1,5 @@
 <?php
+
 namespace VideoStoreKata\video\Rental\RentalStatement;
 
 use VideoStoreKata\video\Customer\Customer;
@@ -19,8 +20,10 @@ class RentalStatement
 
     /**
      * RentalStatement constructor.
-     * @param Customer $customer
+     *
+     * @param Customer                        $customer
      * @param RentalStatementPrinterInterface $printer
+     *
      * @internal param Customer $customer
      */
     public function __construct(Customer $customer, RentalStatementPrinterInterface $printer)

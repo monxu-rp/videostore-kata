@@ -12,58 +12,71 @@ use VideoStoreKata\video\Rental\RentalPriceCalculator\DetermineAmountByFixedPric
 use VideoStoreKata\video\Rental\RentalPriceCalculator\RentalPriceCalculatorInterface;
 
 /**
- * Class RentalCalculation
+ * Class RentalCalculation.
  */
 class RentalCalculation
 {
-    /** @var RentalPriceCalculatorInterface[] */
-    private $calculateRentalAmount;
-
-    /** @var RentalFrequentPointsCalculatorInterface[] */
-    private $calculateRentalFrequentPoints;
+    /** @var Movie */
+    private $movie;
 
     /**
-     * @param $calculateRentalAmount
-     * @param $calculateRentalFrequentPoints
+     * @param Movie $movie
      */
-    private function __construct($calculateRentalAmount, $calculateRentalFrequentPoints)
+    private function __construct(Movie $movie)
     {
-        $this->calculateRentalAmount = $calculateRentalAmount;
-        $this->calculateRentalFrequentPoints = $calculateRentalFrequentPoints;
+        $this->movie = $movie;
     }
 
-    public static function getRentalCalculationFactory(): RentalCalculation
+    public static function instanceRentalCalculation(Movie $movie): RentalCalculation
     {
-        $amountStrategies = array(
-            MovieType::CHILDREN => new DetermineAmountByFixedPriceMinDayAndPricePerDay(1.5, 3, 1.5),
-            MovieType::NEW_RELEASE => new DetermineAmountByFixedPricePerDay(3),
-            MovieType::REGULAR => new DetermineAmountByFixedPriceMinDayAndPricePerDay(2, 2, 1.5)
-        );
-        $frequentRenterPointsStrategies = array(
-            MovieType::CHILDREN => new DetermineFrequentPointsByFixedPoints(1),
-            MovieType::NEW_RELEASE => new DetermineFrequentPointsByMinDayMaxPointAndDefaultPoint(1, 2, 1),
-            MovieType::REGULAR => new DetermineFrequentPointsByFixedPoints(1)
-        );
-
-        return new self($amountStrategies, $frequentRenterPointsStrategies);
+        return new self($movie);
     }
 
-    private function calculateRentalAmount(Movie $movie, int $daysRented): float
+    private function calculateRentalAmount(int $daysRented): float
     {
-        return $this->calculateRentalAmount[$movie->getMovieType()]->determineRentalAmount($daysRented);
+        /** @var RentalPriceCalculatorInterface $rentalAmount */
+        $rentalAmount = null;
+
+        switch ($this->movie->getMovieType()) {
+            case MovieType::REGULAR:
+                $rentalAmount = DetermineAmountByFixedPriceMinDayAndPricePerDay::instance(2, 2, 1.5);
+                break;
+            case MovieType::CHILDREN:
+                $rentalAmount = DetermineAmountByFixedPriceMinDayAndPricePerDay::instance(1.5, 3, 1.5);
+                break;
+            case MovieType::NEW_RELEASE:
+                $rentalAmount = DetermineAmountByFixedPricePerDay::instance(3);
+                break;
+        }
+
+        return $rentalAmount->determineRentalAmount($daysRented);
     }
 
-    private function calculateRentalFrequentPoints(Movie $movie, int $daysRented): int
+    private function calculateRentalFrequentPoints(int $daysRented): int
     {
-        return $this->calculateRentalFrequentPoints[$movie->getMovieType()]->determineFrequentRenterPoints($daysRented);
+        /** @var RentalFrequentPointsCalculatorInterface $rentalFrequentPoints */
+        $rentalFrequentPoints = null;
+
+        switch ($this->movie->getMovieType()) {
+            case MovieType::REGULAR:
+                $rentalFrequentPoints = DetermineFrequentPointsByFixedPoints::instance(1);
+                break;
+            case MovieType::CHILDREN:
+                $rentalFrequentPoints = DetermineFrequentPointsByFixedPoints::instance(1);
+                break;
+            case MovieType::NEW_RELEASE:
+                $rentalFrequentPoints = DetermineFrequentPointsByMinDayMaxPointAndDefaultPoint::instance(1, 2, 1);
+                break;
+        }
+
+        return $rentalFrequentPoints->determineFrequentRenterPoints($daysRented);
     }
 
-    public function totalRental(Movie $movie, int $daysRented): RentalInformation
+    public function totalRental(int $daysRented): RentalInformation
     {
-        $amount = $this->calculateRentalAmount($movie, $daysRented);
-        $frequentRenterPoints = $this->calculateRentalFrequentPoints($movie, $daysRented);
+        $amount = $this->calculateRentalAmount($daysRented);
+        $frequentRenterPoints = $this->calculateRentalFrequentPoints($daysRented);
 
-        return RentalInformation::instanceRentalInformation($movie, $daysRented, $amount, $frequentRenterPoints);
+        return RentalInformation::instanceRentalInformation($this->movie, $daysRented, $amount, $frequentRenterPoints);
     }
-
 }
